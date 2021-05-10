@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>미니 스타크래프트</title> 
+    <link rel="stylesheet" href="style.css">  
+</head>
+<body>
+    <h1 id="hp">HP: 3</h1>
+    <div class="background">
+        <img id="drone" src="images/drone.png" alt="drone">
+        <img id="spit" src="images/spit.png" alt="spit">
+        <img id="bunker" src="images/bunker.png" alt="bunker">
+        <img id="explosion" src="images/Explosion.png" alt="explosion">
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script>
+        var hp = 3;
+        $("#drone").click(function() {
+            if(hp > 0){
+                $("#spit").fadeIn();
+                $("#spit").animate({left:'+=200'},function(){
+                    hp = hp - 1;
+                    $("#hp").text("HP: " + hp);
+                    if (hp == 0){
+                        $("#explosion").fadeIn(100);
+                        $("#bunker").fadeOut(1000);
+                        $("#explosion").fadeOut(1500,function(){
+                            $("#drone").css({transform: "rotate(90deg)",transform: "scaleX(-1)"});
+                            $("#drone").animate({left:'+=-200'},700);
+                        });
+                    }
+                });
+                $("#spit").fadeOut();
+                $("#spit").css({left: '150px'});
+            }
+            // Callback A -> B
+        })
+    </script>
+</body>
+</html>
