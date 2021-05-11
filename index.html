@@ -22,15 +22,20 @@
         var hp = 3;
         $("#hydralisk").click(function() {
             if(hp > 0){
-                $("#spit").fadeIn();
+                $("#spit").fadeIn(100);
                 $("#spit").animate({left:'+=200'},function(){
                     hp = hp - 1;
                     $("#hp_bar").text(hp + " / 3");
                     $("#hp").text("Hp: " + hp);
                     $("#hp_bar").animate({width:'+=-33.333333333333333333333333333%'});
-                    if (hp == 0){
+
+                    if (hp >= 2){
+                        $("#hp_bar").css({background: "#f80"});
+                    } else if (hp >= 1){
+                        $("#hp_bar").css({background: "#f00"});
+                    } else if (hp == 0){
                         $("#hp_bar").hide(1000);
-                        $("#explosion").fadeIn(100);
+                        $("#explosion").fadeIn(500);
                         $("#bunker").fadeOut(1000);
                         $(".bar_container").fadeOut(1000);
                         $("#explosion").fadeOut(1500,function(){
