@@ -6,14 +6,14 @@
     <link rel="stylesheet" href="style.css">  
 </head>
 <body>
-    <h1 class="hp">Hp: 3</h1>
+    <h1 id="hp">Hp: 3</h1>
     <div class="background">
         <img id="hydralisk" src="images/hydralisk.png" alt="hydralisk">
         <img id="spit" src="images/spit.png" alt="spit">
         <img id="bunker" src="images/bunker.png" alt="bunker">
         <img id="explosion" src="images/Explosion.png" alt="explosion">
         <div class="bar_container">
-            <div id="hp_bar" class="hp">Hp : 3</div>
+            <div id="hp_bar">3 / 3</div>
         </div>
     </div>
 
@@ -25,7 +25,8 @@
                 $("#spit").fadeIn();
                 $("#spit").animate({left:'+=200'},function(){
                     hp = hp - 1;
-                    $(".hp").text("Hp: " + hp);
+                    $("#hp_bar").text(hp + " / 3");
+                    $("#hp").text("Hp: " + hp);
                     $("#hp_bar").animate({width:'+=-33.333333333333333333333333333%'});
                     if (hp == 0){
                         $("#hp_bar").hide(1000);
